@@ -7,3 +7,5 @@ set number
 set relativenumber
 set hlsearch
 set ruler
+set mouse=a
+set colorcolumn=80
