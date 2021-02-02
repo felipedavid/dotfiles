@@ -7,3 +7,8 @@ set number
 set relativenumber
 set hlsearch
 set ruler
+set colorcolumn=80
+
+call plug#begin('~/.vim/plugged')
+Plug 'hugolgst/vimsence'
+call plug#end()
