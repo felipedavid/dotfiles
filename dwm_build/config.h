@@ -17,7 +17,7 @@ static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#6790EB";
+static const char col_cyan[]        = "#0489c8";
 //static const unsigned int baralpha = 0xd0;
 static const unsigned int baralpha = 0xff;
 static const unsigned int borderalpha = OPAQUE;
@@ -87,6 +87,7 @@ static const char *filecmd[]  = { "ranger", NULL };
 static const char *calendar[]  = { "gsimplecal", NULL };
 static const char *taskmanager[]  = { "htop", NULL };
 static const char *termcmd[]  = { "termite", NULL };
+static const char *browser[]  = { "brave", NULL };
 
 #include "selfrestart.c"
 //#include "shiftview.c"
@@ -94,6 +95,7 @@ static const char *termcmd[]  = { "termite", NULL };
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_w,      spawn,          {.v = browser} },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
