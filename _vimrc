@@ -46,11 +46,21 @@ set expandtab
 set ai
 set hlsearch
 set ruler
+set cursorline
+set smartindent
+set number
+set relativenumber
+set colorcolumn=80
 
-" gvim
+" disable backup and swap file
+set nobackup
+set noswapfile
+
+colorscheme gruvbox
+set guifont=Fira_Mono_Medium:h7.5
+
+" gvim specific
 set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
-colorscheme gruvbox
-set guifont=Fira_Mono_Medium:h8
