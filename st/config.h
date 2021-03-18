@@ -5,8 +5,8 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Liberation Mono:pixelsize=9.5:antialias=true:autohint=true";
-static int borderpx = 0;
+static char *font = "Consolas:pixelsize=10:antialias=true:autohint=true";
+static int borderpx = 1;
 
 /*
  * What program is execed by st depends of these precedence rules:
@@ -96,30 +96,52 @@ unsigned int tabspaces = 8;
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
 	/* 8 normal colors */
-	"black",
-	"red3",
-	"green3",
-	"yellow3",
-	"blue2",
-	"magenta3",
-	"cyan3",
-	"gray90",
+    "#090300",
+    "#db2d20",
+    "#01a252",
+    "#fded02",
+    "#01a0e4",
+    "#a16a94",
+    "#b5e4f4",
+    "#a5a2a2",
+	//"black",
+	//"red3",
+	//"green3",
+	//"yellow3",
+	//"blue2",
+	//"magenta3",
+	//"cyan3",
+	//"gray90",
 
-	/* 8 bright colors */
-	"gray50",
-	"red",
-	"green",
-	"yellow",
-	"#5c5cff",
-	"magenta",
-	"cyan",
-	"white",
+	///* 8 bright colors */
+    "#5c5855",
+    "#db2d20",
+    "#01a252",
+    "#fded02",
+    "#01a0e4",
+    "#a16a94",
+    "#b5e4f4",
+    "#f7f7f7",
+	//"gray50",
+	//"red",
+	//"green",
+	//"yellow",
+	//"#5c5cff",
+	//"magenta",
+	//"cyan",
+	//"white",
 
 	[255] = 0,
 
 	/* more colors can be added after 255 to use with DefaultXX */
-	"#cccccc",
-	"#555555",
+	//"#cccccc",
+	//"#555555",
+    "#e8bbd0",
+    "#cdab53",
+    "#3a3432",
+    "#4a4543",
+    "#807d7c",
+    "#d6d5d4",
 };
 
 
