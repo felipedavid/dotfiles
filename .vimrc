@@ -23,3 +23,5 @@ set number
 set showmatch
 " intelligent comments
 set comments=sl:/*,mb:\ *,elx:\ */
+
+highlight Visual ctermbg=Blue ctermfg=51
