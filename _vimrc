@@ -46,7 +46,6 @@ set expandtab
 set ai
 set hlsearch
 set ruler
-set cursorline
 set smartindent
 set number
 set relativenumber
@@ -56,11 +55,13 @@ set colorcolumn=80
 set nobackup
 set noswapfile
 
-colorscheme gruvbox
-set guifont=Fira_Mono_Medium:h7.5
+colorscheme industry 
+set guifont=Consolas:h8
 
 " gvim specific
 set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
+
+set noundofile
