@@ -19,9 +19,8 @@ syntax on
 " colorscheme wombat256
 " turn line numbers on
 set number
+set relativenumber
 " highlight matching braces
 set showmatch
 " intelligent comments
 set comments=sl:/*,mb:\ *,elx:\ */
-
-highlight Visual ctermbg=Blue ctermfg=51
