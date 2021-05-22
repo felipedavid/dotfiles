@@ -24,3 +24,5 @@ set relativenumber
 set showmatch
 " intelligent comments
 set comments=sl:/*,mb:\ *,elx:\ */
+
+set colorcolumn=80
