@@ -55,7 +55,7 @@ set colorcolumn=80
 set nobackup
 set noswapfile
 
-colorscheme industry 
+colorscheme pablo 
 set guifont=Consolas:h8
 
 " gvim specific
