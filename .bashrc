@@ -1,13 +1,3 @@
-# .bashrc
-
-# If not running interactively, don't do anything
-[[ $- != *i* ]] && return
-
-alias ls='ls --color=auto'
-PS1='[\u@\h \W]\$ '
-
-export PATH="$PATH:/home/zamb/.local/bin"
-
-alias xi="sudo xbps-install"
-alias xr="sudo xbps-remove"
-alias xq="sudo xbps-query"
+alias ls='ls --color'
+export PS1='\u@\h:\[\e[36m\]\w\[\e[0m\]\$ '
+export EDITOR='vim'
