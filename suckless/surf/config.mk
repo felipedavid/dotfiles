@@ -1,5 +1,5 @@
 # surf version
-VERSION = 2.1
+VERSION = 2.0
 
 # Customize below to fit your system
 
