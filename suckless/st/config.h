@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Consolas:pixelsize=11:antialias=true:autohint=true";
+static char *font = "Liberation Mono:pixelsize=10:antialias=true:autohint=true";
 static int borderpx = 2;
 
 /*
@@ -96,55 +96,31 @@ unsigned int tabspaces = 8;
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
 	/* 8 normal colors */
-    "#090300",
-    "#db2d20",
-    "#01a252",
-    "#fded02",
-    "#01a0e4",
-    "#a16a94",
-    "#b5e4f4",
-    "#a5a2a2",
-	//"black",
-	//"red3",
-	//"green3",
-	//"yellow3",
-	//"blue2",
-	//"magenta3",
-	//"cyan3",
-	//"gray90",
+	"black",
+	"red3",
+	"green3",
+	"yellow3",
+	"blue2",
+	"magenta3",
+	"cyan3",
+	"gray90",
 
-	///* 8 bright colors */
-    "#5c5855",
-    "#db2d20",
-    "#01a252",
-    "#fded02",
-    "#01a0e4",
-    "#a16a94",
-    "#b5e4f4",
-    "#f7f7f7",
-	//"gray50",
-	//"red",
-	//"green",
-	//"yellow",
-	//"#5c5cff",
-	//"magenta",
-	//"cyan",
-	//"white",
+	/* 8 bright colors */
+	"gray50",
+	"red",
+	"green",
+	"yellow",
+	"#5c5cff",
+	"magenta",
+	"cyan",
+	"white",
 
 	[255] = 0,
 
 	/* more colors can be added after 255 to use with DefaultXX */
-	//"#cccccc",
-	//"#555555",
-    "#e8bbd0",
-    "#cdab53",
-    "#3a3432",
-    "#4a4543",
-    "#807d7c",
-    "#d6d5d4",
+	"#cccccc",
+	"#555555",
 };
-
-
 
 
 /*
@@ -198,8 +174,8 @@ static uint forcemousemod = ShiftMask;
  */
 static MouseShortcut mshortcuts[] = {
 	/* mask                 button   function        argument       release */
-	{ XK_ANY_MOD,           Button4, kscrollup,      {.i = 2},      0, /* !alt */ -1 },
-	{ XK_ANY_MOD,           Button5, kscrolldown,    {.i = 2},      0, /* !alt */ -1 },
+	{ XK_ANY_MOD,           Button4, kscrollup,      {.i = 1},      0, /* !alt */ -1 },
+	{ XK_ANY_MOD,           Button5, kscrolldown,    {.i = 1},      0, /* !alt */ -1 },
 	{ XK_ANY_MOD,           Button2, selpaste,       {.i = 0},      1 },
 	{ ShiftMask,            Button4, ttysend,        {.s = "\033[5;2~"} },
 	{ XK_ANY_MOD,           Button4, ttysend,        {.s = "\031"} },
