@@ -47,8 +47,6 @@ set ai
 set hlsearch
 set ruler
 set smartindent
-set number
-set relativenumber
 set colorcolumn=80
 
 " disable backup and swap file
