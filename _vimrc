@@ -53,7 +53,6 @@ set colorcolumn=80
 set nobackup
 set noswapfile
 
-colorscheme pablo 
 set guifont=Consolas:h8
 
 " gvim specific
@@ -64,3 +63,5 @@ set guioptions-=L  "remove left-hand scroll bar
 
 set noundofile
 
+execute pathogen#infect()
+colorscheme deep-space
