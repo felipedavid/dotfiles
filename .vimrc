@@ -6,3 +6,4 @@ set ai
 set number
 set hlsearch
 set ruler
+hi Visual cterm=none ctermbg=darkgrey ctermfg=cyan
