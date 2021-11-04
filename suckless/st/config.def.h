@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Liberation Mono:pixelsize=10:antialias=true:autohint=true";
+static char *font = "Consolas:pixelsize=11:antialias=true:autohint=true";
 static int borderpx = 2;
 
 /*
@@ -95,25 +95,43 @@ unsigned int tabspaces = 8;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-	/* 8 normal colors */
-	"black",
-	"red3",
-	"green3",
-	"yellow3",
-	"blue2",
-	"magenta3",
-	"cyan3",
-	"gray90",
+    "#000000",
+    "#db2d20",
+    "#01a252",
+    "#fded02",
+    "#01a0e4",
+    "#a16a94",
+    "#b5e4f4",
+    "#a5a2a2",
 
-	/* 8 bright colors */
-	"gray50",
-	"red",
-	"green",
-	"yellow",
-	"#5c5cff",
-	"magenta",
-	"cyan",
-	"white",
+    "#5c5855",
+    "#e8bbd0",
+    "#3a3432",
+    "#4a4543",
+    "#807d7c",
+    "#d6d5d4",
+    "#cdab53",
+    "#f7f7f7",
+
+	/* 8 normal colors */
+	//"black",
+	//"red3",
+	//"green3",
+	//"yellow3",
+	//"blue2",
+	//"magenta3",
+	//"cyan3",
+	//"gray90",
+
+	///* 8 bright colors */
+	//"gray50",
+	//"red",
+	//"green",
+	//"yellow",
+	//"#5c5cff",
+	//"magenta",
+	//"cyan",
+	//"white",
 
 	[255] = 0,
 
@@ -174,8 +192,8 @@ static uint forcemousemod = ShiftMask;
  */
 static MouseShortcut mshortcuts[] = {
 	/* mask                 button   function        argument       release */
-	{ XK_ANY_MOD,           Button4, kscrollup,      {.i = 1},      0, /* !alt */ -1 },
-	{ XK_ANY_MOD,           Button5, kscrolldown,    {.i = 1},      0, /* !alt */ -1 },
+	{ XK_ANY_MOD,           Button4, kscrollup,      {.i = 3},      0, /* !alt */ -1 },
+	{ XK_ANY_MOD,           Button5, kscrolldown,    {.i = 3},      0, /* !alt */ -1 },
 	{ XK_ANY_MOD,           Button2, selpaste,       {.i = 0},      1 },
 	{ ShiftMask,            Button4, ttysend,        {.s = "\033[5;2~"} },
 	{ XK_ANY_MOD,           Button4, ttysend,        {.s = "\031"} },
