@@ -37,6 +37,8 @@
 #define LENGTH(x)               (sizeof(x) / sizeof(x[0]))
 #define CLEANMASK(mask)         (mask & (MODKEY|GDK_SHIFT_MASK))
 
+static char *default_page = "https://duckduckgo.com";
+
 enum { AtomFind, AtomGo, AtomUri, AtomLast };
 
 enum {
@@ -2117,7 +2119,7 @@ main(int argc, char *argv[])
 	if (argc > 0)
 		arg.v = argv[0];
 	else
-		arg.v = "about:blank";
+		arg.v = default_page;
 
 	setup();
 	c = newclient(NULL);
