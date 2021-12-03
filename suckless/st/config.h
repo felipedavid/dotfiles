@@ -6,6 +6,12 @@
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
 static char *font = "JetBrainsMono Nerd Font:pixelsize=10.5:antialias=true:autohint=true";
+static char *font2[] = { 
+    "JoyPixels:pixelsize=10:antialias=true:autohint=true",
+    "Inconsolata for Powerline:pixelsize=12:antialias=true:autohint=true",
+    "Hack Nerd Font Mono:pixelsize=11:antialias=true:autohint=true",
+
+};
 static int borderpx = 4;
 
 /*
@@ -16,7 +22,7 @@ static int borderpx = 4;
  * 4: value of shell in /etc/passwd
  * 5: value of shell in config.h
  */
-static char *shell = "/bin/bash";
+static char *shell = "/bin/sh";
 char *utmp = NULL;
 /* scroll program: to enable use a string like "scroll" */
 char *scroll = NULL;
