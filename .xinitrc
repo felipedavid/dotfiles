@@ -2,5 +2,6 @@ slstatus &
 nm-applet &
 megasync &
 dunst &
-scripts/remaps.sh
+picom &
+scripts/run_startup.sh
 exec dwm
