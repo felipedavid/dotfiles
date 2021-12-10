@@ -78,11 +78,12 @@ static const char *termcmd[]  = { "tabbed", "-r", "2", "st", "-w", "''", NULL };
 static const char *surfcmd[] = { "tabbed", "surf", "-e", NULL };
 static const char *zathuracmd[] = { "tabbed", "zathura", "-e", NULL };
 static const char *slockcmd[] = { "slock", NULL };
+static const char *browsercmd[] = { "brave", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_s,      spawn,          {.v = surfcmd } },
 	{ MODKEY,                       XK_z,      spawn,          {.v = zathuracmd } },
 	{ MODKEY|ShiftMask,             XK_l,      spawn,          {.v = slockcmd} },
