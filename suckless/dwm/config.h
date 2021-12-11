@@ -8,8 +8,8 @@ static const char *voldowncmd[] = { "amixer", "-q", "set", "Master", "5%-", "unm
 //static const char *miccmd[] = { "amixer", "set", "Capture", "toggle", NULL };
 
 // brightness control keys
-static const char *brupcmd[] = { "sudo", "xbacklight", "-inc", "10", NULL };
-static const char *brdowncmd[] = { "sudo", "xbacklight", "-dec", "10", NULL };
+static const char *brupcmd[] = { "sudo", "xbacklight", "-inc", "25", NULL };
+static const char *brdowncmd[] = { "sudo", "xbacklight", "-dec", "25", NULL };
 
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
@@ -87,7 +87,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_s,      spawn,          {.v = surfcmd } },
 	{ MODKEY,                       XK_z,      spawn,          {.v = zathuracmd } },
 	{ MODKEY|ShiftMask,             XK_l,      spawn,          {.v = slockcmd} },
-	{ MODKEY,                       XK_b,      togglebar,      {0} },
+	{ MODKEY,                       XK_b,      spawn,          {.v = browsercmd } },
+	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
