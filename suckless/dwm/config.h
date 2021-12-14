@@ -60,7 +60,7 @@ static const Layout layouts[] = {
 };
 
 /* key definitions */
-#define MODKEY Mod1Mask
+#define MODKEY Mod4Mask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
@@ -78,7 +78,7 @@ static const char *termcmd[]  = { "tabbed", "-r", "2", "st", "-w", "''", NULL };
 static const char *surfcmd[] = { "tabbed", "surf", "-e", NULL };
 static const char *zathuracmd[] = { "tabbed", "zathura", "-e", NULL };
 static const char *slockcmd[] = { "slock", NULL };
-static const char *browsercmd[] = { "brave", NULL };
+static const char *browsercmd[] = { "firefox", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */

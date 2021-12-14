@@ -7,10 +7,7 @@
  */
 static char *font = "JetBrainsMono Nerd Font:pixelsize=10.5:antialias=true:autohint=true";
 static char *font2[] = { 
-    "JoyPixels:pixelsize=10:antialias=true:autohint=true",
-    "Inconsolata for Powerline:pixelsize=12:antialias=true:autohint=true",
-    "Hack Nerd Font Mono:pixelsize=11:antialias=true:autohint=true",
-
+    "JoyPixels:pixelsize=10:antialias=true:autohint=true"
 };
 static int borderpx = 4;
 
@@ -159,7 +156,7 @@ static unsigned int defaultrcs = 256;
  * 6: Bar ("|")
  * 7: Snowman ("☃")
  */
-static unsigned int cursorshape = 2;
+static unsigned int cursorshape = 6;
 
 /*
  * Default columns and rows numbers
@@ -223,6 +220,18 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
 	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
 	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
+	{ MODKEY,               XK_k,           kscrollup,      {.i =  1} },
+	{ MODKEY,               XK_j,           kscrolldown,    {.i =  1} },
+	{ MODKEY,               XK_Up,          kscrollup,      {.i =  1} },
+	{ MODKEY,               XK_Down,        kscrolldown,    {.i =  1} },
+	{ MODKEY,               XK_u,           kscrollup,      {.i = -1} },
+	{ MODKEY,               XK_d,           kscrolldown,    {.i = -1} },
+	//{ TERMMOD,              XK_Up,          zoom,           {.f = +1} },
+	//{ TERMMOD,              XK_Down,        zoom,           {.f = -1} },
+	{ TERMMOD,              XK_K,           zoom,           {.f = +1} },
+	{ TERMMOD,              XK_J,           zoom,           {.f = -1} },
+	{ TERMMOD,              XK_U,           zoom,           {.f = +2} },
+	{ TERMMOD,              XK_D,           zoom,           {.f = -2} },
 };
 
 /*
