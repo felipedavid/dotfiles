@@ -44,7 +44,7 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	//{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
 };
 
 /* layout(s) */
@@ -78,7 +78,7 @@ static const char *termcmd[]  = { "tabbed", "-r", "2", "st", "-w", "''", NULL };
 static const char *surfcmd[] = { "tabbed", "surf", "-e", NULL };
 static const char *zathuracmd[] = { "tabbed", "zathura", "-e", NULL };
 static const char *slockcmd[] = { "slock", NULL };
-static const char *browsercmd[] = { "firefox", NULL };
+static const char *browsercmd[] = { "firefox-esr", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
