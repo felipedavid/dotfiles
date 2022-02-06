@@ -5,11 +5,8 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "JetBrainsMono Nerd Font:pixelsize=10.5:antialias=true:autohint=true";
-static char *font2[] = { 
-    "JoyPixels:pixelsize=10:antialias=true:autohint=true"
-};
-static int borderpx = 4;
+static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
+static int borderpx = 2;
 
 /*
  * What program is execed by st depends of these precedence rules:
@@ -71,20 +68,6 @@ static unsigned int blinktimeout = 800;
 static unsigned int cursorthickness = 2;
 
 /*
- * 1: render most of the lines/blocks characters without using the font for
- *    perfect alignment between cells (U2500 - U259F except dashes/diagonals).
- *    Bold affects lines thickness if boxdraw_bold is not 0. Italic is ignored.
- * 0: disable (render all U25XX glyphs normally from the font).
- */
-const int boxdraw = 1;
-const int boxdraw_bold = 1;
-
-/* braille (U28XX):  1: render as adjacent "pixels",  0: use font */
-const int boxdraw_braille = 1;
-
-/*
-
-/*
  * bell volume. It must be a value between -100 and 100. Use 0 for disabling
  * it
  */
@@ -113,30 +96,32 @@ unsigned int tabspaces = 8;
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
 	/* 8 normal colors */
-	"#32363D", /* black   */
-	"#E06B74", /* red     */
-	"#98C379", /* green   */
-	"#E5C07A", /* yellow  */
-	"#62AEEF", /* blue    */
-	"#C778DD", /* magenta */
-	"#55B6C2", /* cyan    */
-	"#ABB2BF", /* white   */
+	"black",
+	"red3",
+	"green3",
+	"yellow3",
+	"blue2",
+	"magenta3",
+	"cyan3",
+	"gray90",
 
 	/* 8 bright colors */
-	"#50545B", /* black   */
-	"#EA757E", /* red     */
-	"#A2CD83", /* green   */
-	"#EFCA84", /* yellow  */
-	"#6CB8F9", /* blue    */
-	"#D282E7", /* magenta */
-	"#5FC0CC", /* cyan    */
-	"#B5BCC9", /* white   */
+	"gray50",
+	"red",
+	"green",
+	"yellow",
+	"#5c5cff",
+	"magenta",
+	"cyan",
+	"white",
 
 	[255] = 0,
 
 	/* more colors can be added after 255 to use with DefaultXX */
-	"#121212", /* background */
-	"#ABB2BF", /* foreground */
+	"#cccccc",
+	"#555555",
+	"gray90", /* default foreground colour */
+	"black", /* default background colour */
 };
 
 
@@ -144,10 +129,10 @@ static const char *colorname[] = {
  * Default colors (colorname index)
  * foreground, background, cursor, reverse cursor
  */
-unsigned int defaultfg = 257;
-unsigned int defaultbg = 256;
-static unsigned int defaultcs = 257;
-static unsigned int defaultrcs = 256;
+unsigned int defaultfg = 258;
+unsigned int defaultbg = 259;
+unsigned int defaultcs = 256;
+static unsigned int defaultrcs = 257;
 
 /*
  * Default shape of cursor
@@ -156,13 +141,13 @@ static unsigned int defaultrcs = 256;
  * 6: Bar ("|")
  * 7: Snowman ("☃")
  */
-static unsigned int cursorshape = 6;
+static unsigned int cursorshape = 2;
 
 /*
  * Default columns and rows numbers
  */
 
-static unsigned int cols = 82;
+static unsigned int cols = 80;
 static unsigned int rows = 24;
 
 /*
@@ -191,8 +176,6 @@ static uint forcemousemod = ShiftMask;
  */
 static MouseShortcut mshortcuts[] = {
 	/* mask                 button   function        argument       release */
-	{ XK_ANY_MOD,           Button4, kscrollup,      {.i = 1},      0, /* !alt */ -1 },
-	{ XK_ANY_MOD,           Button5, kscrolldown,    {.i = 1},      0, /* !alt */ -1 },
 	{ XK_ANY_MOD,           Button2, selpaste,       {.i = 0},      1 },
 	{ ShiftMask,            Button4, ttysend,        {.s = "\033[5;2~"} },
 	{ XK_ANY_MOD,           Button4, ttysend,        {.s = "\031"} },
@@ -213,27 +196,11 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Prior,       zoom,           {.f = +1} },
 	{ TERMMOD,              XK_Next,        zoom,           {.f = -1} },
 	{ TERMMOD,              XK_Home,        zoomreset,      {.f =  0} },
-	//{ TERMMOD,              XK_C,           clipcopy,       {.i =  0} },
-	//{ TERMMOD,              XK_V,           clippaste,      {.i =  0} },
-	{ MODKEY,               XK_c,           clipcopy,       {.i =  0} },
-	{ MODKEY,               XK_v,           clippaste,      {.i =  0} },
+	{ TERMMOD,              XK_C,           clipcopy,       {.i =  0} },
+	{ TERMMOD,              XK_V,           clippaste,      {.i =  0} },
 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
-	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
-	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
-	{ MODKEY,               XK_k,           kscrollup,      {.i =  1} },
-	{ MODKEY,               XK_j,           kscrolldown,    {.i =  1} },
-	{ MODKEY,               XK_Up,          kscrollup,      {.i =  1} },
-	{ MODKEY,               XK_Down,        kscrolldown,    {.i =  1} },
-	{ MODKEY,               XK_u,           kscrollup,      {.i = -1} },
-	{ MODKEY,               XK_d,           kscrolldown,    {.i = -1} },
-	{ TERMMOD,              XK_Up,          zoom,           {.f = +1} },
-	{ TERMMOD,              XK_Down,        zoom,           {.f = -1} },
-	{ TERMMOD,              XK_K,           zoom,           {.f = +1} },
-	{ TERMMOD,              XK_J,           zoom,           {.f = -1} },
-	{ TERMMOD,              XK_U,           zoom,           {.f = +2} },
-	{ TERMMOD,              XK_D,           zoom,           {.f = -2} },
 };
 
 /*

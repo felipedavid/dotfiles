@@ -1,38 +1,25 @@
 /* See LICENSE file for copyright and license details. */
 #include <X11/XF86keysym.h>
 
-// audio control keys
-static const char *mutecmd[] = { "pactl", "set-sink-mute", "0", "toggle", NULL };
-static const char *volupcmd[] = { "amixer", "-q", "set", "Master", "5%+", "unmute", NULL };
-static const char *voldowncmd[] = { "amixer", "-q", "set", "Master", "5%-", "unmute", NULL };
-//static const char *miccmd[] = { "amixer", "set", "Capture", "toggle", NULL };
-
-// brightness control keys
-static const char *brupcmd[] = { "sudo", "xbacklight", "-inc", "25", NULL };
-static const char *brdowncmd[] = { "sudo", "xbacklight", "-dec", "25", NULL };
-
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
-static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
-static const unsigned int systrayspacing = 2;   /* systray spacing */
-static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
-static const int showsystray        = 1;     /* 0 means no systray */
-static const int showbar            = 0;        /* 0 means no bar */
+static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "JetBrainsMono Nerd Font:size=7.5" };
-static const char dmenufont[]       = "JetBrainsMono Nerd Font:size=7.5";
-static const char col_gray1[]       = "#121212";
-static const char col_gray2[]       = "#232323";
+static const char *fonts[]          = { "JetBrainsMono Nerd Font:size=8" };
+static const char dmenufont[]       = "JetBrainsMono Nerd Font:size=8";
+static const char col_gray0[]       = "#121212";
+static const char col_gray1[]       = "#232323";
+static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#cccccc";
-static const char col_red[]         = "#820a14";
+static const char col_gray4[]       = "#f7f7f7";
+static const char col_cyan[]        = "#005577";
+static const char col_red[]       = "#8b0000";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2},
-	[SchemeSel]  = { col_gray4, col_gray2, col_red},
+	[SchemeNorm] = { col_gray3, col_gray0, col_gray2 },
+	[SchemeSel]  = { col_gray4, col_gray1,  col_red},
 };
-
 
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
@@ -44,13 +31,13 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	//{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
 };
 
 /* layout(s) */
 static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
+static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
@@ -60,7 +47,7 @@ static const Layout layouts[] = {
 };
 
 /* key definitions */
-#define MODKEY Mod4Mask
+#define MODKEY Mod1Mask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
@@ -72,25 +59,23 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run" , "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray4, "-sb", col_gray2, "-sf", col_gray4, NULL };
-//static const char *termcmd[]  = { "st", NULL };
-static const char *termcmd[]  = { "tabbed", "-r", "2", "st", "-w", "''", NULL };
-static const char *scrotcmd[] = { "/home/batman/.scripts/scrot.sh", NULL };
-static const char *scrot2cmd[] = { "/home/batman/.scripts/scrots.sh", NULL };
-static const char *zathuracmd[] = { "tabbed", "zathura", "-e", NULL };
-static const char *slockcmd[] = { "slock", NULL };
-static const char *browsercmd[] = { "firefox", NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray0, "-nf", col_gray3, "-sb", col_gray1, "-sf", col_gray4, NULL };
+static const char *termcmd[]  = { "st", NULL };
+
+// volume
+static const char *mutecmd[] = { "amixer", "-q", "set", "Master", "toggle", NULL };
+static const char *volupcmd[] = { "amixer", "-q", "set", "Master", "5%+", "unmute", NULL };
+static const char *voldowncmd[] = { "amixer", "-q", "set", "Master", "5%-", "unmute", NULL };
+
+// backlight
+static const char *brupcmd[] = { "sudo", "xbacklight", "-inc", "10", NULL };
+static const char *brdowncmd[] = { "sudo", "xbacklight", "-dec", "10", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_s,      spawn,          {.v = scrotcmd } },
-	{ MODKEY|ShiftMask,             XK_s,      spawn,          {.v = scrot2cmd } },
-	{ MODKEY,                       XK_z,      spawn,          {.v = zathuracmd } },
-	{ MODKEY|ShiftMask,             XK_l,      spawn,          {.v = slockcmd} },
-	{ MODKEY,                       XK_b,      spawn,          {.v = browsercmd } },
-	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
+	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },

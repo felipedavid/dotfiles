@@ -4,17 +4,14 @@
 static int topbar = 1;                      /* -b  option; if 0, dmenu appears at bottom     */
 /* -fn option overrides fonts[0]; default X11 font or font set */
 static const char *fonts[] = {
-    "JetBrainsMono Nerd Font:size=7.5",
-    "joypixels:size=7",
+	"monospace:size=10"
 };
 static const char *prompt      = NULL;      /* -p  option; prompt to the left of input field */
 static const char *colors[SchemeLast][2] = {
 	/*     fg         bg       */
-	[SchemeNorm] = { "#bbbbbb", "#232323" },
-	//[SchemeSel] = { "#eeeeee", "#005577" },
-	[SchemeSel] = { "#eeeeee", "#121212" },
-	//[SchemeOut] = { "#000000", "#00ffff" },
-	[SchemeOut] = { "#000000", "#000000" },
+	[SchemeNorm] = { "#bbbbbb", "#222222" },
+	[SchemeSel] = { "#eeeeee", "#005577" },
+	[SchemeOut] = { "#000000", "#00ffff" },
 };
 /* -l option; if nonzero, dmenu uses vertical list with given number of lines */
 static unsigned int lines      = 0;
