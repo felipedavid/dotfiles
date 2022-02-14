@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "JetBrainsMono Nerd Font:pixelsize=10:antialias=true:autohint=true";
+static char *font = "Consolas:pixelsize=11:antialias=true:autohint=true";
 static int borderpx = 2;
 
 /*
@@ -120,7 +120,8 @@ static const char *colorname[] = {
 	/* more colors can be added after 255 to use with DefaultXX */
 	"#cccccc",
 	"#555555",
-	"#f7f7f7", /* default foreground colour */
+	//"#f7f7f7", /* default foreground colour */
+	"#BBBBBB", /* default foreground colour */
 	"#000000", /* default background colour */
 };
 
