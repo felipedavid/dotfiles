@@ -1,9 +1,14 @@
-syntax on
-set tabstop=4
-set shiftwidth=4
+syntax off
+set nocompatible
+
 set expandtab
+set shiftwidth=4
 set ai
-set number
-set hlsearch
-set ruler
-hi Visual cterm=none ctermbg=darkgrey ctermfg=cyan
+set si
+
+" finding files
+set path+=**
+set wildmenu
+
+" create tags file
+command! MakeTags !ctags -R .
