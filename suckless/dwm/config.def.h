@@ -9,10 +9,10 @@ static const unsigned int systrayonleft = 0;   	/* 0: systray in the right corne
 static const unsigned int systrayspacing = 2;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
 static const int showsystray        = 1;     /* 0 means no systray */
-static const int showbar            = 1;     /* 0 means no bar */
+static const int showbar            = 0;     /* 0 means no bar */
 static const int topbar             = 1;     /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=8" };
-static const char dmenufont[]       = "monospace:size=8";
+static const char *fonts[]          = { "Consolas:size=9" };
+static const char dmenufont[]       = "Consolas:size=9";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
@@ -72,6 +72,9 @@ static const char *upvol[]   = { "/usr/bin/pactl", "set-sink-volume", "0", "+5%"
 static const char *downvol[] = { "/usr/bin/pactl", "set-sink-volume", "0", "-5%",     NULL };
 static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute",   "0", "toggle",  NULL };
 
+static const char *scrotcmd[]  = { "/bin/scrot", "/home/batman/screenshots/%Y-%m-%d_%H%M%S.png", NULL };
+static const char *scrotscmd[] = { "/bin/scrot","/home/batman/screenshots/%Y-%m-%d_%H%M%S.png", "-s", NULL };
+
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
@@ -110,6 +113,8 @@ static Key keys[] = {
     { 0,                       XF86XK_AudioLowerVolume, spawn, {.v = downvol } },
     { 0,                       XF86XK_AudioMute, spawn, {.v = mutevol } },
     { 0,                       XF86XK_AudioRaiseVolume, spawn, {.v = upvol   } },
+	{ MODKEY,                       XK_s,      spawn,          {.v = scrotcmd } },
+	{ MODKEY|ShiftMask,             XK_s,      spawn,          {.v = scrotscmd } },
 };
 
 /* button definitions */
