@@ -78,7 +78,6 @@ static const char *scrotscmd[] = { "/bin/scrot","/home/batman/screenshots/%Y-%m-
 
 static const char *timew_start[] = {"/usr/local/bin/timew", "start", NULL};
 static const char *timew_stop[] = {"/usr/local/bin/timew", "stop", NULL};
-static const char *timew_continue[] = {"/usr/local/bin/timew", "continue", NULL};
 static const char *timew_stat[] = {"/usr/local/bin/timew", NULL};
 
 static Key keys[] = {
@@ -123,8 +122,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_s,      spawn,          {.v = scrotscmd } },
 	{ MODKEY,                       XK_F1,      spawn,         {.v = timew_start } },
 	{ MODKEY,                       XK_F2,      spawn,         {.v = timew_stop } },
-	{ MODKEY,                       XK_F3,      spawn,         {.v = timew_continue } },
-	{ MODKEY,                       XK_F4,      spawn,         {.v = timew_stat } },
+	{ MODKEY,                       XK_F3,      spawn,         {.v = timew_stat } },
 };
 
 /* button definitions */
