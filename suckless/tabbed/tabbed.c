@@ -261,9 +261,9 @@ configurenotify(const XEvent *e)
 		ww = ev->width;
 		wh = ev->height;
 		XFreePixmap(dpy, dc.drawable);
-		dc.drawable = XCreatePixmap(dpy, win, ww, wh,
-		              32);
-                
+        dc.drawable = XCreatePixmap(dpy, win, ww, wh,
+            32);
+
 
 		if (!obh && (wh <= bh)) {
 			obh = bh;
