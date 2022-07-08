@@ -66,11 +66,15 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_dark1, "-nf", col_gray4, "-sb", col_dark2, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "tabbed", "-c", "-r", "2", "st", "-w", "''", NULL };
+static const char *termcmd[]  = { "tabbed", "-r", "2", "st", "-w", "''", NULL };
 
 static const char *upvol[]   = { "/usr/bin/pactl", "set-sink-volume", "0", "+5%",     NULL };
 static const char *downvol[] = { "/usr/bin/pactl", "set-sink-volume", "0", "-5%",     NULL };
 static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute",   "0", "toggle",  NULL };
+
+static const char *timew_start[] = { "timew", "start",  NULL };
+static const char *timew_stop[] = { "timew", "stop",  NULL };
+static const char *timew_continue[] = { "timew", "continue",  NULL };
 
 static const char *scrotcmd[]  = { "/bin/scrot", "/home/batman/screenshots/%Y-%m-%d_%H%M%S.png", NULL };
 static const char *scrotscmd[] = { "/bin/scrot","/home/batman/screenshots/%Y-%m-%d_%H%M%S.png", "-s", NULL };
@@ -116,6 +120,10 @@ static Key keys[] = {
 	{ 0,                       XF86XK_AudioRaiseVolume, spawn, {.v = upvol   } },
 	{ MODKEY,                  XK_s, spawn, {.v = scrotcmd } },
 	{ MODKEY|ShiftMask,        XK_s, spawn, {.v = scrotscmd } },
+
+	{ MODKEY,                  XK_F1, spawn, {.v = timew_start } },
+	{ MODKEY,                  XK_F2, spawn, {.v = timew_continue } },
+	{ MODKEY,                  XK_F3, spawn, {.v = timew_stop } },
 };
 
 /* button definitions */
