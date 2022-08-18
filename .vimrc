@@ -6,15 +6,16 @@ set ai
 set number
 set hlsearch
 set ruler
-highlight Comment ctermfg=green
+
+hi Comment ctermfg=green
+hi Visual cterm=none ctermbg=darkgrey ctermfg=cyan
+
+" finding files
+set path+=**
+set wildmenu
+
 
 call plug#begin()
-Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
-Plug 'pangloss/vim-javascript'
-Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
-Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-Plug 'jparise/vim-graphql'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'mattn/emmet-vim'
 call plug#end()
