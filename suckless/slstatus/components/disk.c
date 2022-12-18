@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <sys/statvfs.h>
 
+#include "../slstatus.h"
 #include "../util.h"
 
 const char *

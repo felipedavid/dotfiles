@@ -1,10 +1,10 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const char font[]        = "monospace:size=8";
-static const char* normbgcolor  = "#121212";
+static const char font[]        = "Consolas:size=9.5";
+static const char* normbgcolor  = "#222222";
 static const char* normfgcolor  = "#cccccc";
-static const char* selbgcolor   = "#202020";
+static const char* selbgcolor   = "#555555";
 static const char* selfgcolor   = "#ffffff";
 static const char* urgbgcolor   = "#111111";
 static const char* urgfgcolor   = "#cc0000";
@@ -34,7 +34,7 @@ static Bool npisrelative  = False;
 }
 
 #define MODKEY ControlMask
-static Key keys[] = {
+static const Key keys[] = {
 	/* modifier             key        function     argument */
 	{ MODKEY|ShiftMask,     XK_Return, focusonce,   { 0 } },
 	{ MODKEY|ShiftMask,     XK_Return, spawn,       { 0 } },
@@ -59,17 +59,8 @@ static Key keys[] = {
 
 	{ MODKEY,               XK_q,      killclient,  { 0 } },
 
-	//{ MODKEY,               XK_u,      focusurgent, { 0 } },
-	//{ MODKEY|ShiftMask,     XK_u,      toggle,      { .v = (void*) &urgentswitch } },
+	{ MODKEY,               XK_u,      focusurgent, { 0 } },
+	{ MODKEY|ShiftMask,     XK_u,      toggle,      { .v = (void*) &urgentswitch } },
 
 	{ 0,                    XK_F11,    fullscreen,  { 0 } },
-
-	{ MODKEY,               XK_Shift_L, showbar,    { .i = 1 } },
-	{ ShiftMask,            XK_Control_L, showbar,    { .i = 1 } },
-};
-
-static Key keyreleases[] = {
-	/* modifier             key          function     argument */
-	{ MODKEY|ShiftMask,     XK_Shift_L,  showbar,     { .i = 0 } },
-	{ MODKEY|ShiftMask,     XK_Control_L,  showbar,     { .i = 0 } },
 };

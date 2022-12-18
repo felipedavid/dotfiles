@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <time.h>
 
+#include "../slstatus.h"
 #include "../util.h"
 
 #if defined(CLOCK_BOOTTIME)
@@ -14,7 +15,7 @@
 #endif
 
 const char *
-uptime(void)
+uptime(const char *unused)
 {
 	char warn_buf[256];
 	uintmax_t h, m;
