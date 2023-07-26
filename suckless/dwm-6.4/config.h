@@ -1,3 +1,5 @@
+#include <X11/XF86keysym.h>
+
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
@@ -62,15 +64,24 @@ static const Layout layouts[] = {
 /* commands */
 static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
-static const char *maim[] = { "maim", "~/screenshots/$(date +%F-%H_%M_%S).png", NULL };
-static const char *maim_select[] = { "maim", "-s", "~/screenshots/$(date +%F-%H_%M_%S).png", NULL };
+static const char *print_screen_cmd[] = { "/bin/sh", "-c", "maim ~/screenshots/$(date +%s).png", NULL };
+static const char *print_region_cmd[] = { "/bin/sh", "-c", "maim -s ~/screenshots/$(date +%s).png", NULL };
+static const char *print_window_cmd[] = { "/bin/sh", "-c", "maim -i $(xdotool getactivewindow) ~/screenshots/$(date +%s).png", NULL };
+
+static const char *upvol[]      = { "/usr/bin/pactl",   "set-sink-volume", "0",      "+5%",      NULL };
+static const char *downvol[]    = { "/usr/bin/pactl",   "set-sink-volume", "0",      "-5%",      NULL };
+static const char *mutevol[]    = { "/usr/bin/pactl",   "set-sink-mute",   "0",      "toggle",   NULL };
+
+static const char *light_up[]   = { "/usr/bin/light",   "-A", "5", NULL };
+static const char *light_down[] = { "/usr/bin/light",   "-U", "5", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_s,      spawn,          {.v = maim } },
-	{ MODKEY|ShiftMask,             XK_s,      spawn,          {.v = maim_select } },
+	{ MODKEY,                       XK_s,      spawn,          {.v = print_screen_cmd } },
+	{ MODKEY|ShiftMask,             XK_s,      spawn,          {.v = print_region_cmd } },
+	{ MODKEY|ControlMask,           XK_s,      spawn,          {.v = print_window_cmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -102,6 +113,13 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+
+    { 0,                       XF86XK_AudioLowerVolume, spawn, {.v = downvol } },
+	{ 0,                       XF86XK_AudioMute, spawn, {.v = mutevol } },
+	{ 0,                       XF86XK_AudioRaiseVolume, spawn, {.v = upvol   } },
+
+    { 0,				XF86XK_MonBrightnessUp,		spawn,	{.v = light_up} },
+	{ 0,				XF86XK_MonBrightnessDown,	spawn,	{.v = light_down} },
 };
 
 /* button definitions */
