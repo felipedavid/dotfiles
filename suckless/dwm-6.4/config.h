@@ -12,8 +12,8 @@ static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display 
 static const int showsystray        = 1;        /* 0 means no systray */
 static const int showbar            = 0;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Consolas:size=9.5" };
-static const char dmenufont[]       = "Consolas:size=9.5";
+static const char *fonts[]          = { "Consolas:size=10" };
+static const char dmenufont[]       = "Consolas:size=10";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
@@ -69,6 +69,9 @@ static const char *print_screen_cmd[] = { "/bin/sh", "-c", "maim ~/screenshots/$
 static const char *print_region_cmd[] = { "/bin/sh", "-c", "maim -s ~/screenshots/$(date +%s).png", NULL };
 static const char *print_window_cmd[] = { "/bin/sh", "-c", "maim -i $(xdotool getactivewindow) ~/screenshots/$(date +%s).png", NULL };
 
+static const char *toggle_timew[] = { "/home/batman/dotfiles/.scripts/timew_toggle.sh", NULL };
+static const char *toggle_layout[] = { "/home/batman/dotfiles/.scripts/toggle_layout.sh", NULL };
+
 static const char *upvol[]      = { "/usr/bin/pactl",   "set-sink-volume", "0",      "+5%",      NULL };
 static const char *downvol[]    = { "/usr/bin/pactl",   "set-sink-volume", "0",      "-5%",      NULL };
 static const char *mutevol[]    = { "/usr/bin/pactl",   "set-sink-mute",   "0",      "toggle",   NULL };
@@ -85,6 +88,8 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_s,      spawn,          {.v = print_screen_cmd } },
 	{ MODKEY|ShiftMask,             XK_s,      spawn,          {.v = print_region_cmd } },
 	{ MODKEY|ControlMask,           XK_s,      spawn,          {.v = print_window_cmd } },
+	{ MODKEY,                       XK_F1,     spawn,          {.v = toggle_timew } },
+	{ MODKEY,                       XK_F2,     spawn,          {.v = toggle_layout } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_Page_Up, spawn,         {.v = toggle_tw} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
