@@ -16,6 +16,8 @@ return require('packer').startup(function(use)
     use('mbbill/undotree')
     use('tpope/vim-fugitive')
 
+    use('stevearc/conform.nvim')
+
     use {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v3.x',
@@ -26,6 +28,7 @@ return require('packer').startup(function(use)
 
             -- LSP Support
             {'neovim/nvim-lspconfig'},
+
             -- Autocompletion
             {'hrsh7th/nvim-cmp'},
             {'hrsh7th/cmp-nvim-lsp'},
@@ -33,16 +36,13 @@ return require('packer').startup(function(use)
         }
     }
 
-    use({
-        "stevearc/conform.nvim",
-        config = function()
-            require("conform").setup()
-        end,
-    })
+    use {
+        'akinsho/flutter-tools.nvim',
+        requires = {
+            'nvim-lua/plenary.nvim',
+            'stevearc/dressing.nvim', -- optional for vim.ui.select
+        },
+    }
 
-    -- debugger
-    use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
-    use 'theHamsta/nvim-dap-virtual-text'
-    use 'leoluz/nvim-dap-go'
 
 end)

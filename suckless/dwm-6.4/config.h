@@ -1,10 +1,5 @@
 #include <X11/XF86keysym.h>
-
-/* See LICENSE file for copyright and license details. */
-
-/* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
-static const unsigned int snap      = 32;       /* snap pixel */
+/* See LICENSE file for copyright and license details. */ /* appearance */ static const unsigned int borderpx  = 1;        /* border pixel of windows */ static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayonleft = 0;    /* 0: systray in the right corner, >0: systray on left of status text */
 static const unsigned int systrayspacing = 2;   /* systray spacing */
@@ -69,8 +64,8 @@ static const char *print_screen_cmd[] = { "/bin/sh", "-c", "maim ~/screenshots/$
 static const char *print_region_cmd[] = { "/bin/sh", "-c", "maim -s ~/screenshots/$(date +%s).png", NULL };
 static const char *print_window_cmd[] = { "/bin/sh", "-c", "maim -i $(xdotool getactivewindow) ~/screenshots/$(date +%s).png", NULL };
 
-static const char *toggle_timew[] = { "/home/batman/dotfiles/.scripts/timew_toggle.sh", NULL };
-static const char *toggle_layout[] = { "/home/batman/dotfiles/.scripts/toggle_layout.sh", NULL };
+static const char *toggle_timew[] = { "/home/smooth/.scripts/timew_toggle.sh", NULL };
+static const char *toggle_layout[] = { "/home/smooth/.scripts/toggle_layout.sh", NULL };
 
 static const char *upvol[]      = { "/usr/bin/pactl",   "set-sink-volume", "0",      "+5%",      NULL };
 static const char *downvol[]    = { "/usr/bin/pactl",   "set-sink-volume", "0",      "-5%",      NULL };

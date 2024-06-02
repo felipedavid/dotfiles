@@ -65,6 +65,8 @@ static const char unknown_str[] = "n/a";
  */
 static const struct arg args[] = {
 	/* function format          argument */
-    { run_command, "Worked hours: %s  ", "/usr/local/bin/get_worked_hours.sh", NULL },
-	{ datetime, "%s",           "%F %T" },
+    { run_command, "Worked hours: %s", "/usr/local/bin/get_worked_hours.sh", },
+    { battery_state, "  %s"    , "BAT1" },
+    { battery_perc,  "%s%%", "BAT1" },
+	{ datetime, "  %s",           "%F %T" },
 };
